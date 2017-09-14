@@ -63,9 +63,11 @@ public class SceneController : MonoBehaviour {
 	public void CardRevealed (MemoryCard card) {
 		if (_firstRevealed == null) {
 			_firstRevealed = card;
-		} else {
+		} else if (_secondRevealed == null) {
 			_secondRevealed = card;
 			StartCoroutine (CheckMatch());
+		} else {
+			card.Unreveal ();
 		}
 	}
 
